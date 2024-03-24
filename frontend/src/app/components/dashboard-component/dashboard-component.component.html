@@ -1,0 +1,30 @@
+
+
+<h3 class="heading">Todo App</h3>
+<div class="todo-wrapper">
+  
+  <div class="input-btn-wraper">
+    <div class="search-button" [formGroup]="myForm">
+      <input formControlName="todoInput" class="input-tag"> <!-- Bind input to formControlName -->
+      <button class="btn" (click)="addToList()" [disabled]="todoInput()?.invalid">Add to list</button>
+    </div>
+  
+    <div class="navigation">
+      <button (click)="getTodos()"      [class.selected]="selectedButton === 'All'">All</button>
+      <button (click)="showCompleted()" [class.selected]="selectedButton === 'Completed'">Completed</button>
+      <button (click)="showPending()"   [class.selected]="selectedButton === 'Pending'">Pending</button>
+      <button (click)="showdeleted()"   [class.selected]="selectedButton === 'Deleted'">Deleted</button>
+  </div>
+  
+  <ng-container *ngIf="currentTodos" else noTodo>
+    <app-todo-list class="todos" *ngFor="let todo of getPageTodos()" [SingleTodo]="todo" (editedTodo)="editTodo(todo)"></app-todo-list>
+  </ng-container>
+  <ng-template #noTodo> no Todo</ng-template>
+
+      <div class="pagination">
+        <img src="../../../assets/previous.svg" height="20" width="20" alt="previous" (click)="prevPage()">
+        <span>{{ currentPage }} / {{ totalPages() }}</span>
+        <img src="../../../assets/next.svg" height="20" width="20" alt="nextpage" (click)="nextPage()">
+      </div>
+  </div>
+</div>

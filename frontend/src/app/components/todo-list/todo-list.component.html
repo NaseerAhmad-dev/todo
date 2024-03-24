@@ -1,0 +1,10 @@
+<div class="single-todo">
+    <input type="checkbox" (click)="todoCompleted(SingleTodo)" *ngIf="SingleTodo.status != 'deleted'">
+    <p class="todo-item">{{SingleTodo.todo}}</p>
+    <p class="todo-item" [ngClass]="{ 'status-completed': SingleTodo.status === 'completed', 'status-pending': SingleTodo.status === 'pending',  'status-deleted': SingleTodo.status === 'deleted',  }">{{SingleTodo.status}}</p>
+    <div class="buttons" *ngIf="SingleTodo.status != 'deleted'">
+        <img src="../../../assets/edit.svg" height="20" width="20" alt="" (click)="updateTodo(SingleTodo)">
+        <img src="../../../assets/delete.svg" height="20" width="20" alt=""  (click)="deleteTodo(SingleTodo)">
+    </div>
+
+</div>

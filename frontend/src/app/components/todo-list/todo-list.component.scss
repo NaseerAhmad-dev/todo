@@ -1,0 +1,45 @@
+.single-todo{
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   gap:20px;
+   min-width: 30%;
+   
+    .buttons{
+            display: flex;
+            gap:4px;
+            img{
+                cursor: pointer;
+            }
+    }
+    .todo-item{
+        margin:0px;
+    }
+    .status-completed{
+        display: flex;
+        padding: 4px 8px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        color:#047857;
+        background: var(--Green-20, #D1FAE5);
+    }
+    .status-pending{
+        @extend .status-completed;
+        color:#C2410C;
+        background: #FFEDD5;
+    }
+    .status-deleted{
+        @extend .status-completed;
+        color:#B91C1C;
+        background: #FEE2E2;
+    }
+}
+input[type=checkbox] {
+    height: 20px;
+    width: 20px;
+    :checked{
+        background-color: #059669;
+        opacity: 1;
+    }
+  }
